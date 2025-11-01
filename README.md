@@ -1,4 +1,5 @@
 Project Overview
+
     Joineazy Assignment Dashboard is a React web application designed to manage assignments between admins and students.
     Admins can add, edit, and delete assignments, monitor submission statuses from students, and track progress.
     Students can view their assignments, mark them as submitted, and track their submission progress.
@@ -7,6 +8,7 @@ Project Overview
     It features clean UI design using Bootstrap, responsive layouts, and ease of role-switching between admin and students.
 
 Features
+
     Role-based dashboards (Admin and Student Views)
 
     Admin can manage assignments and view student submission statuses
@@ -57,6 +59,7 @@ Build for production
 Build files will be available in the build directory
 
 Architecture Overview
+
     App.js maintains the global assignment state and user role, loading/saving assignments to localStorage. It routes between Student and Admin dashboards based on role.
 
     AdminDashboard.js provides assignment CRUD operations via input forms, adds assignments to global state, computes and displays progress, and lists all assignments with editing and deletion. Changes propagate up to App.js.
@@ -72,6 +75,7 @@ Architecture Overview
     UI styling uses Bootstrap and custom CSS for responsive design.
 
 Important Design Decisions
+
     State and localStorage sync is done in App.js to maintain the single source of truth for assignments.
 
     Passing down event handlers (onAdd, onEdit, onDelete, onSubmit) allows fine-grained control and modular components.
