@@ -1,74 +1,82 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+Project Overview
+    Joineazy Assignment Dashboard is a React web application designed to manage assignments between admins and students.
+    Admins can add, edit, and delete assignments, monitor submission statuses from students, and track progress.
+    Students can view their assignments, mark them as submitted, and track their submission progress.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    This app supports persistent localStorage saving to keep assignments and submission data saved across browser sessions.
+    It features clean UI design using Bootstrap, responsive layouts, and ease of role-switching between admin and students.
 
-## Available Scripts
+Features
+    Role-based dashboards (Admin and Student Views)
 
-In the project directory, you can run:
+    Admin can manage assignments and view student submission statuses
 
-### `npm start`
+    Students can mark assignments as submitted
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    Progress bars visualize the submission progress
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    Assignments and submission data persist via localStorage
 
-### `npm test`
+    Responsive UI with modals for confirmation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    Easy switching between student users and roles
 
-### `npm run build`
+Technology Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    Frontend: React.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    Styling:Custom CSS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    Persistent Storage: Browser localStorage
 
-### `npm run eject`
+    Components: Modular React components including AdminDashboard, StudentDashboard, AssignmentList, AssignmentItem, ProgressBar, Navbar
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Setup Instructions
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Clone the repository
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    git clone https://github.com/uttej-git/joineazy-task1.git
+    cd joineazy-task1.git
 
-## Learn More
+Install dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Run the development server
 
-### Code Splitting
+    npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The app will be served at http://localhost:3000
 
-### Analyzing the Bundle Size
+Build for production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+    npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Build files will be available in the build directory
 
-### Advanced Configuration
+Architecture Overview
+    App.js maintains the global assignment state and user role, loading/saving assignments to localStorage. It routes between Student and Admin dashboards based on role.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    AdminDashboard.js provides assignment CRUD operations via input forms, adds assignments to global state, computes and displays progress, and lists all assignments with editing and deletion. Changes propagate up to App.js.
 
-### Deployment
+    StudentDashboard.js receives assigned tasks filtered for the current student, displays status, and supports marking assignments as submitted, notifying App.js.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    AssignmentList.js renders the list of assignments using AssignmentItem.js components.
 
-### `npm run build` fails to minify
+    AssignmentItem.js displays individual assignment details, shows submission statuses, and provides UI controls for submitting, editing, and deleting assignments. It leverages callbacks to update state in App.js.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# joineazy-task1
->>>>>>> f75a769a4f93a5831d5fb9400bcefdf4388cef7f
+    ProgressBar.js visually represents the completion percentage, safely handling zero state to avoid NaN errors.
+
+    UI styling uses Bootstrap and custom CSS for responsive design.
+
+Important Design Decisions
+    State and localStorage sync is done in App.js to maintain the single source of truth for assignments.
+
+    Passing down event handlers (onAdd, onEdit, onDelete, onSubmit) allows fine-grained control and modular components.
+
+    LocalStorage persistence enables offline usage and data retention without backend.
+
+    Role switch and student ID selection provide a seamless user experience to test different roles.
+
